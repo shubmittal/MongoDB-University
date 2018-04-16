@@ -1,19 +1,14 @@
-var pipeline = [
-
-{$match : {$and : [{"imdb.rating" : {$gte : 7}} , 
-  {genres : {$nin : ["Crime", "Horror"]}} ,
-  {rated : {$in : ['G', 'PG']}},
-  {languages : {$all : ["English", "Japanese"]}}
+var pipeline = [{$match : {$and : [
+ 
+ {"imdb.rating": {$gte: 7}},
+ {genres : {$nin: ["Crime", "Horror"]}},
+ {rated : {$in : ["PG", "G"]}},
+ {languages : {$all : ["English", "Japanese"]}}
+ 
+  
+  ]}}]
   
   
-  ]}}
-
-, {$project : {"imdb.rating":1, genres:1, rated: 1, languages:1, _id :0}}
-
-]
-
-//db.movies.aggregate(pipeline).itcount()
-
-load('<location>\\validateLab1.js')
+load("C:\\Users\\shub_\\Documents\\AllCodeBase\\MongoDB-University\\M121\\Chap1\\validateLab1.js")
 
 validateLab1(pipeline)
